@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.poke-img{
+    width: 65px;
+}
+h2{
+    /* font-size: 40px; */
+    text-align: center;
+    margin: 50px auto ;
+    width: 50%;
+    border-radius: 15px;
+}
+
+#container{
+    width: 90%;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.pokemon-img{
+    background: url(/assets/css/img/178799.jpg);
+    border-bottom-left-radius: 10px;
+    border-radius: 50%;
+    background-size: 100% 95% ;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    height: 350px;
+}
+.flex-space{
+    display: flex;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+.evo-cont{
+    display: flex;
+    margin-right: 150px;    
+}
+#card{
+    border-radius: 15px;
+}
