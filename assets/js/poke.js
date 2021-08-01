@@ -95,3 +95,20 @@ function consultMove(id) {
         })
     })
 }
+// get Pokemon Types
+function consultType(id) {
+    fetch(`https://pokeapi.co/api/v2/type/${id}`)
+    .then(function(response) {
+        response.json()
+        .then(function (type) {
+
+            console.log(type)
+            renderType(type)
+
+            var renderType =function(type) {
+                var typetExtract =type.name
+            }
+
+        })
+    })
+}
