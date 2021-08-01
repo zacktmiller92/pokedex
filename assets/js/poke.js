@@ -1,4 +1,5 @@
 
+// Generate Pokemons
 function consultPokemon(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(function (response) {
@@ -24,10 +25,24 @@ var renderPokemons = function(pokemon) {
 }
 
 // gets pokemon abilities. Loops through and uses push the add the name of each array to 'abilitiesArray'
-var abilitiesArray = [];
-for (var i = 0; i < pokemon.abilities.length; i++) {
-    abilitiesArray.push(pokemon.abilities[i].ability.name)
-};
+function consultAbilities (id) {
+    fetch(`https://pokeapi.co/api/v2/ability/${id}`)
+    .then (function (response) {
+        response.json()
+        .then(function(ability) {
+        
+            var abilitiesArray = [];
+            for (var i = 0; i < pokemon.abilities.length; i++) {
+                abilitiesArray.push(pokemon.abilities[i].ability.name)
+            };
+            })
+
+        })
+    }
+
+    consultMove()
+
+
 // joins the abilities array, replaces the hyphens with spaces and renders on the screen
 
 $(".text-info").html(abilitiesArray.join("<br>").replace("-"," "))
@@ -42,10 +57,31 @@ name.textContent = pokemon.name
 
 }
 
-var movesArray = [];
-for (var i= 0; i < pokemon.moves.length; i++) {
-    movesArray.push(pokemon.moves[i].moves.name)
-};
+// get pokemon moves
+function consultMove(id) {
+    fetch(`https://pokeapi.co/api/v2/move/${id}`)
+    .then(function (response) {
+        response.json()
+        .then(function (moves) {
+
+            console.log(move)
+            rendorMoves(move)
 
 
+            var moveArray = [];
+            for (var i= 0; i < pokemon.move.length; i++) {
+                moveArray.push(pokemon.move[i].move.name)
+            };
+            
+            })
+
+        })
+
+    };
+    consultMove()
+    
 $("#pokemon_form").on("submit", formHandler)
+
+
+
+
