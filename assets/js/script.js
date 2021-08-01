@@ -67,3 +67,12 @@ var renderPokeData = function(pokeData) {
 };
 
 $("#pokemon_form").on("submit", formHandler)
+
+localStorage.setItem('name', 'Pokemon');
+localStorage.setItem('notes', JSON.stringify(notes))
+const name = localStorage.getItem('name');
+    console.log(name) // 'Pokemon'
+    JSON.parse(localStorage.getItem('notes'))
+    
+    window.addEventListener('storage', doSomething())
+    
