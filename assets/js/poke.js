@@ -27,7 +27,7 @@ var renderPokemons = function(pokemon) {
 // gets pokemon abilities. Loops through and uses push the add the name of each array to 'abilitiesArray'
 function consultAbilities (id) {
     fetch(`https://pokeapi.co/api/v2/ability/${id}`)
-    .then (function (response) {
+    .then(function (response) {
         response.json()
         .then(function(ability) {
         
@@ -39,9 +39,6 @@ function consultAbilities (id) {
 
         })
     }
-
-    consultMove()
-
 
 // joins the abilities array, replaces the hyphens with spaces and renders on the screen
 
@@ -79,9 +76,22 @@ function consultMove(id) {
 
     };
     consultMove()
-    
-$("#pokemon_form").on("submit", formHandler)
 
+    //Get Pokemon Stats
+    function consultStat(id) {
+        fetch(`https://pokeapi.co/api/v2/stat/${id}`)
+        .then(function(response) {
+            response.json()
+            .then(function (stat) {
 
+                console.log(stat)
+                renderStats(stat)
 
+                var renderStat = function(Stat) {
+                    var statExtract = stat.name
+                
 
+            }
+        })
+    })
+}
