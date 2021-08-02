@@ -1,7 +1,25 @@
-var formHandler = function() {
+// slide nav init------------------
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  
+  // slider init------------
+  $(document).ready(function(){
+    $('.slider').slider({
+      height: 500,
+      interval : 2000,
+    });
+    
+  });
+  
+  
+
+
+
+var formHandler = function(event) {
     event.preventDefault();
     
-    var pokemonName = $("#last_name").val()
+    var pokemonName = $("#pokename").val()
     
     getWikiData(pokemonName)
     getPokeData(pokemonName)
