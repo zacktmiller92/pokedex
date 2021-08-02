@@ -6,7 +6,7 @@ $(document).ready(function(){
   // slider init------------
   $(document).ready(function(){
     $('.slider').slider({
-      height: 500,
+      height: 450,
       interval : 2000,
     });
     
@@ -14,12 +14,19 @@ $(document).ready(function(){
 
 var formHandler = function(event) {
     event.preventDefault();
-    
+  
     var pokemonName = $("#pokename").val()
     
     getWikiData(pokemonName)
     getPokeData(pokemonName)
 };
+
+// everything will appear---------------
+$(document).ready(function() {
+    $(".btn1").click(function(){
+        $("#in").show(2000);
+    })
+})
 
 
 var getWikiData = function(pokemonName) {
@@ -31,6 +38,8 @@ var getWikiData = function(pokemonName) {
 var renderWikiData = function(wikiData) {
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
     $(".text-info").html(wikiExtract)
+    $(".text-info").css("color", "white")
+
 };
 
 
@@ -51,7 +60,7 @@ var renderPokeData = function(pokeData) {
          var typesArray = [];
 
          // primary image of pokemon
-         var primaryImage = pokeData.sprites.other["official-artwork"].front_default
+         var primaryImage = pokeData.sprites.other["dream_world"].front_default
 
         // abilities array
         for (var i = 0; i < pokeData.abilities.length; i++) {

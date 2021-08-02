@@ -8,6 +8,15 @@ body{
     background: black;
 }
 
+/* content inside the slide menu */
+ .check{
+     width: fit-content;
+ }
+
+ .background{
+    background: url(/assets/images/img/20998.jpg);
+    background-size: cover;
+}
 .poke-img{
     width: 65px;
 }
@@ -15,15 +24,18 @@ body{
 .pokemon-img {
     text-align: center;
 }
+
+.pokemon-img img{
+    max-width: 100%;
+}
+
 .text-info{
     text-align: justify;
 }
-.f_img{
-    height: 140%;
-}
+
 
 h2{
-    /* font-size: 40px; */
+    color: whitesmoke;
     text-align: center;
     margin: 50px auto ;
     width: 50%;
@@ -31,35 +43,55 @@ h2{
 }
 
 #container{
+
     width: 90%;
+    height: 1000px;
     margin: auto;
-    border: 1px solid;
     border-radius: 20px;
     padding: 20px;
+    margin-bottom: 500px;
 }
 
 .btn{
     border-radius: 10px; 
  }
 
-.pokemon-img{
-    background: url(/assets/css/img/178799.jpg);
-    border-bottom-left-radius: 10px;
-    border-radius: 50%;
-    background-size: 100% 95% ;
-    background-repeat: no-repeat;
-    margin-top: 10px;
-    height: 350px;
+#in{
+    display: none;
 }
-.flex-space{
-    display: flex;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
+
+/* -------------discription card--------- */
+.card{
+    border-radius: 8px;
+}
+.text-info{
+    height: 380px;
+    overflow-x:hidden;
+}
+.moves{    
+    height: 180px;
+    overflow-x:hidden;
 }
 .evo-cont{
-    display: flex;
-    margin-right: 150px;    
+
+    padding-bottom: 100px;
+    margin-top: 100px;
+    opacity: 80%;
 }
 #card{
     border-radius: 15px;
+    opacity: 50%;
+    margin-top: 80px;
+}
+
+@media all and (max-width: 1024px){
+    #card{        
+        margin-top: 0px;
+    }
+}
+
+@media all and (max-width: 768px){
+    #card{        
+        margin-bottom: 100px;
+    }
 }
