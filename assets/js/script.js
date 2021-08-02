@@ -11,10 +11,6 @@ $(document).ready(function(){
     });
     
   });
-  
-  
-
-
 
 var formHandler = function(event) {
     event.preventDefault();
