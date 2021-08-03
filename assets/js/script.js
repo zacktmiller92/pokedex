@@ -18,8 +18,8 @@ var pokeHistory = []
 
 $(".btn1").click(function(event) {
     event.preventDefault(); 
-    if( pokemonName === pokeHistory){
-        
+    if( pokemonName === pokeHistoryEl){
+        return null;
     }  else{        
         
         var pokemonName = $("#pokename").val()
