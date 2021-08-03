@@ -16,19 +16,30 @@ $(document).ready(function(){
 var pokeHistoryEl = $(".history");
 var pokeHistory = []
 
-var formHandler = function(event) {
-    event.preventDefault();
-  
-    var pokemonName = $("#pokename").val()
-    pokeHistory.push(pokemonName);
-    localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
-    
-    getWikiData(pokemonName)
-    getPokeData(pokemonName)
-    history()
-};
+$(".btn1").click(function(event) {
+    event.preventDefault(); 
+    if( pokemonName === pokeHistory){
+        
+    }  else{        
+        
+        var pokemonName = $("#pokename").val()
+        pokeHistory.push(pokemonName);
+        localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
+        
+        getWikiData(pokemonName)
+        getPokeData(pokemonName)
+        // console.log("this is making double");
+        history()
+    }
+});
 
+// clear history---------------
+$(".btn2").click(function(){
+    localStorage.clear();
+    console.log("clear");
+  });
 
+// history storage loop
 function history(){
     pokeHistoryEl.empty();
     for ( i = 0; i < pokeHistory.length; i++){
@@ -38,13 +49,14 @@ function history(){
     }
 }
 
-// everything will appear---------------
-$(document).ready(function() {
+// search function to render everything on the screen---------------
+$(document).ready(function() {        
+
     $(".btn1").click(function(){
         
         $("#in").show(2000);
         
-    })
+    })    
 })
 
 
@@ -108,4 +120,4 @@ var renderPokeData = function(pokeData) {
         $("#poke-types").html(typesArray.join("<br>").replace("-"," "))      
 };
 
-$("#pokemon_form").on("submit", formHandler)
+// $("#pokemon_form").on("submit", formHandler)
