@@ -12,19 +12,38 @@ $(document).ready(function(){
     
   });
 
+
+var pokeHistoryEl = $(".history");
+var pokeHistory = []
+
 var formHandler = function(event) {
     event.preventDefault();
   
     var pokemonName = $("#pokename").val()
+    pokeHistory.push(pokemonName);
+    localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
     
     getWikiData(pokemonName)
     getPokeData(pokemonName)
+    history()
 };
+
+
+function history(){
+    pokeHistoryEl.empty();
+    for ( i = 0; i < pokeHistory.length; i++){
+        
+        var li = $("<li>").text(pokeHistory[i]);
+        pokeHistoryEl.append(li).addClass("")
+    }
+}
 
 // everything will appear---------------
 $(document).ready(function() {
     $(".btn1").click(function(){
+        
         $("#in").show(2000);
+        
     })
 })
 
@@ -37,7 +56,7 @@ var getWikiData = function(pokemonName) {
 
 var renderWikiData = function(wikiData) {
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
-    $(".text-info").html(wikiExtract)
+    $(".text-info").html(wikiExtract).addClass("info");
     $(".text-info").css("color", "white")
 
 };

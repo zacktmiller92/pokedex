@@ -15,6 +15,7 @@ body{
 
  .background{
     background: url(/assets/images/img/20998.jpg);
+    background-position: center;
     background-size: cover;
 }
 .poke-img{
@@ -23,10 +24,6 @@ body{
 
 .pokemon-img {
     text-align: center;
-}
-
-.pokemon-img img{
-    max-width: 100%;
 }
 
 .text-info{
@@ -55,6 +52,10 @@ h2{
 .btn{
     border-radius: 10px; 
  }
+ .history{
+     font-size: 28px;
+     color: yellowgreen;
+ }
 
 #in{
     display: none;
@@ -66,11 +67,23 @@ h2{
 }
 .text-info{
     height: 380px;
-    overflow-x:hidden;
+    overflow-y: scroll;    
+}
+
+.text-info::-webkit-scrollbar{
+    display: none;
+}
+
+.test1{
+    display: none;
 }
 .moves{    
     height: 180px;
-    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.moves::-webkit-scrollbar{
+    display: none;
 }
 .evo-cont{
 
@@ -90,8 +103,23 @@ h2{
     }
 }
 
+
 @media all and (max-width: 768px){
-    #card{        
-        margin-bottom: 100px;
-    }
+    
+    @media all and (max-width: 768px){
+        .slider , h2{
+            display: none;
+        }
+        
+        #card{        
+            margin-bottom: 100px;
+        }
+
+        .test1{
+        display: inline-block;    
+        opacity: 80%;     
+        }
+        .text-info{
+            margin-top: 50px;
+        }
 }
