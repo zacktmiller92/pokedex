@@ -1,11 +1,63 @@
-var formHandler = function() {
-    event.preventDefault();
+// slide nav init------------------
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  
+  // slider init------------
+  $(document).ready(function(){
+    $('.slider').slider({
+      height: 450,
+      interval : 2000,
+    });
     
-    var pokemonName = $("#last_name").val()
-    
-    getWikiData(pokemonName)
-    getPokeData(pokemonName)
-};
+  });
+
+
+var pokeHistoryEl = $(".history");
+var pokeHistory = []
+
+$(".btn1").click(function(event) {
+    event.preventDefault(); 
+    if( pokemonName === pokeHistoryEl){
+        return null;
+    }  else{        
+        
+        var pokemonName = $("#pokename").val()
+        pokeHistory.push(pokemonName);
+        localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
+        
+        getWikiData(pokemonName)
+        getPokeData(pokemonName)
+        // console.log("this is making double");
+        history()
+    }
+});
+
+// clear history---------------
+$(".btn2").click(function(){
+    localStorage.clear();
+    console.log("clear");
+  });
+
+// history storage loop
+function history(){
+    pokeHistoryEl.empty();
+    for ( i = 0; i < pokeHistory.length; i++){
+        
+        var li = $("<li>").text(pokeHistory[i]);
+        pokeHistoryEl.append(li).addClass("")
+    }
+}
+
+// search function to render everything on the screen---------------
+$(document).ready(function() {        
+
+    $(".btn1").click(function(){
+        
+        $("#in").show(2000);
+        
+    })    
+})
 
 
 var getWikiData = function(pokemonName) {
@@ -16,7 +68,9 @@ var getWikiData = function(pokemonName) {
 
 var renderWikiData = function(wikiData) {
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
-    $(".text-info").html(wikiExtract)
+    $(".text-info").html(wikiExtract).addClass("info");
+    $(".text-info").css("color", "white")
+
 };
 
 
@@ -37,7 +91,7 @@ var renderPokeData = function(pokeData) {
          var typesArray = [];
 
          // primary image of pokemon
-         var primaryImage = pokeData.sprites.other["official-artwork"].front_default
+         var primaryImage = pokeData.sprites.other["dream_world"].front_default
 
         // abilities array
         for (var i = 0; i < pokeData.abilities.length; i++) {
@@ -66,4 +120,4 @@ var renderPokeData = function(pokeData) {
         $("#poke-types").html(typesArray.join("<br>").replace("-"," "))      
 };
 
-$("#pokemon_form").on("submit", formHandler)
+// $("#pokemon_form").on("submit", formHandler)

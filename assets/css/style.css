@@ -4,11 +4,35 @@
     box-sizing: border-box;
 }
 
+body{
+    background: black;
+}
+
+/* content inside the slide menu */
+ .check{
+     width: fit-content;
+ }
+
+ .background{
+    background: url(/assets/images/img/20998.jpg);
+    background-position: center;
+    background-size: cover;
+}
 .poke-img{
     width: 65px;
 }
+
+.pokemon-img {
+    text-align: center;
+}
+
+.text-info{
+    text-align: justify;
+}
+
+
 h2{
-    /* font-size: 40px; */
+    color: whitesmoke;
     text-align: center;
     margin: 50px auto ;
     width: 50%;
@@ -16,31 +40,86 @@ h2{
 }
 
 #container{
+
     width: 90%;
+    height: 1000px;
     margin: auto;
-    border: 1px solid;
     border-radius: 20px;
     padding: 20px;
+    margin-bottom: 500px;
 }
 
-.pokemon-img{
-    background: url(/assets/css/img/178799.jpg);
-    border-bottom-left-radius: 10px;
-    border-radius: 50%;
-    background-size: 100% 95% ;
-    background-repeat: no-repeat;
-    margin-top: 10px;
-    height: 350px;
+.btn{
+    border-radius: 10px; 
+ }
+ .history{
+     font-size: 28px;
+     color: yellowgreen;
+ }
+
+#in{
+    display: none;
 }
-.flex-space{
-    display: flex;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
+
+/* -------------discription card--------- */
+.card{
+    border-radius: 8px;
+}
+.text-info{
+    height: 380px;
+    overflow-y: scroll;    
+}
+
+.text-info::-webkit-scrollbar{
+    display: none;
+}
+
+.test1{
+    display: none;
+}
+.moves{    
+    height: 180px;
+    overflow-y:scroll;
+}
+
+.moves::-webkit-scrollbar{
+    display: none;
 }
 .evo-cont{
-    display: flex;
-    margin-right: 150px;    
+
+    padding-bottom: 100px;
+    margin-top: 100px;
+    opacity: 80%;
 }
 #card{
     border-radius: 15px;
+    opacity: 50%;
+    margin-top: 80px;
+}
+
+@media all and (max-width: 1024px){
+    #card{        
+        margin-top: 0px;
+    }
+}
+
+
+@media all and (max-width: 768px){
+    
+    @media all and (max-width: 768px){
+        .slider , h2{
+            display: none;
+        }
+        
+        #card{        
+            margin-bottom: 100px;
+        }
+
+        .test1{
+        display: inline-block;    
+        opacity: 80%;     
+        }
+        .text-info{
+            margin-top: 50px;
+        }
 }
