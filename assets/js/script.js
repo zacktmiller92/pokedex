@@ -18,19 +18,14 @@ var pokeHistory = []
 
 $(".btn1").click(function(event) {
     event.preventDefault(); 
-    if( pokemonName === pokeHistoryEl){
-        return null;
-    }  else{        
-        
-        var pokemonName = $("#pokename").val()
-        pokeHistory.push(pokemonName);
-        localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
-        
-        getWikiData(pokemonName)
-        getPokeData(pokemonName)
-        // console.log("this is making double");
-        history()
-    }
+    var pokemonName = $("#pokename").val()
+    pokeHistory.push(pokemonName);
+    localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
+    
+    getWikiData(pokemonName)
+    getPokeData(pokemonName)
+
+    history()
 });
 
 // clear history---------------
@@ -41,12 +36,17 @@ $(".btn2").click(function(){
 
 // history storage loop
 function history(){
+
+    var pokeHistory = JSON.parse(localStorage.getItem("pokeHistory"))
+
     pokeHistoryEl.empty();
-    for ( i = 0; i < pokeHistory.length; i++){
+
+    for ( var i = 0; i < pokeHistory.length; i++){
         
         var li = $("<li>").text(pokeHistory[i]);
         pokeHistoryEl.append(li).addClass("")
     }
+    console.log('history function has run')
 }
 
 // search function to render everything on the screen---------------
@@ -120,4 +120,5 @@ var renderPokeData = function(pokeData) {
         $("#poke-types").html(typesArray.join("<br>").replace("-"," "))      
 };
 
+history()
 // $("#pokemon_form").on("submit", formHandler)
