@@ -21,8 +21,6 @@ $(".btn1").click(function(event) {
     var pokemonName = $("#pokename").val()
     pokeHistory.push(pokemonName);
     
-    localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
-    
     // getWikiData(pokemonName)
     getPokeData(pokemonName)
 
@@ -83,6 +81,7 @@ var getPokeData = function(pokemonName) {
                 renderPokeData(pokemon)
             })
             getWikiData(pokemonName)
+            localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
             history()
         } else {
             // enter modal here that says "enter valid pokmeon name". then remove alert.
