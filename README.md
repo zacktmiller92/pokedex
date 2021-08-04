@@ -7,7 +7,6 @@ Use the Pokemon Search to explore Pokémon by type, stats, ability, and more! Ex
 
 
 
-
 ## Description
 Use the Pokemon Search to explore Pokémon by type, stats, ability, and more! Explore movies as well as series!
 
