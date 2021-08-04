@@ -18,7 +18,7 @@ var pokeHistory = []
 
 $(".btn1").click(function(event) {
     event.preventDefault(); 
-    var pokemonName = $("#pokename").val()
+    var pokemonName = $("#pokename").attr("checked", true).val().toLowerCase()
     // pokeHistory.push(pokemonName);
     
     // getWikiData(pokemonName)
