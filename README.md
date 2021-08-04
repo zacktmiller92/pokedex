@@ -52,10 +52,13 @@
 
 >1- This project was made to have quick access to pokemon data , to those who love the PokeVerse.
 <br>
+
 >2- insted of using many different API they can just come and use this tool and it will gather all the info for us.
 <br>
+
 >3- The purpose of this project it is to make poke search easier.
 <br>
+
 >4- We have different issues tabs , like if you have any suggestion , maybe you would like to see more updates or if you found a bug please let us know.
 
 <br>
@@ -64,7 +67,7 @@
 <br>
 
 
-                              Home Page  
+                                Home Page  
  
  <img src="./assets/images/readmeImg/Document (1).png" title="Home Page" width="100%"> | 
  <img src="./assets/images/readmeImg/Document (2).png" title="Login Page" width="100%"> |
@@ -114,12 +117,17 @@ First off, thanks for taking the time to check out this app! Contributions are w
 The original setup of this repository is by [zack Miller](https://github.com/zacktmiller92/pokedex.git).
 
 full list of all authors and contributors.
+<br>
+
 > 1- Zack Miller [Java Script , materialize].
 <br>
+
 > 2- Jose Luis Mejia [HTML , CSS , java Script , Materialize ].
 <br>
+
 > 3- Julian Wilson [ Java Script]
 <br>
+
 > 4- Maria Soares [ Local Storage JS ]
 
 
@@ -133,5 +141,6 @@ full list of all authors and contributors.
 > A big thanks to those API who helped us make this app possible and to software libraries that make all our coding less time consuming. 
 <br>
 <br>
+
 > Last but not least important , an enormous thanks and respect to all those who helped us on this projects [ T.A ].
 <br>
