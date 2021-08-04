@@ -56,12 +56,13 @@
 >4- We have different issues tabs , like if you have any suggestion , maybe you would like to see more updates or if you found a bug please let us know.
 
 <br>
+<br>
 <details>
 <summary>Screenshots and Demo</summary>
 <br>
 
 
-                                Home Page  
+                                            Home Page 
  
  <img src="./assets/images/readmeImg/Document (1).png" title="Home Page" width="100%"> | 
  <img src="./assets/images/readmeImg/Document (2).png" title="Login Page" width="100%"> |
@@ -70,8 +71,9 @@
 
 </details>
 <br>
+<br>
 
-## <strong> Built With
+## Built With
 <br>
 
 >* <a href="https://www.w3schools.com/html/default.asp">HTML</a>
@@ -85,15 +87,15 @@
 <br>
 <br>
 
-## <strong> Installation
+##  Installation
 <br>
 
->Get started with the project by simply clicking <a href="https://zacktmiller92.github.io/pokedex/">Here.</a>
+>Get started with this project by simply clicking <a href="https://zacktmiller92.github.io/pokedex/">Here.</a>
 
 <br>
 <br>
 
-## <strong> Usage
+## Usage
 
 <br>
 
@@ -103,27 +105,27 @@
 <br>
 <br>
 
-## <strong> Authors & contributors
+##  Authors & contributors
 <br>
 
 First off, thanks for taking the time to check out this app! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
 
-The original setup of this repository is by [zack Miller](https://github.com/zacktmiller92/pokedex.git).
+The original setup of this repository is by [Zack Miller](https://github.com/zacktmiller92/pokedex.git).
 
 Full list of all authors and contributors.
 <br>
 <br>
 
 > 1- Zack Miller [Java Script , materialize].<br>
+> 3- Julian Wilson [ Java Script].<br>
 > 2- Jose Luis Mejia [HTML , CSS , java Script , Materialize ].<br>
-> 3- Julian Wilson [ Java Script]<br>
-> 4- Maria Soares [ Local Storage JS ]
+> 4- Maria Soares [ Local Storage JS ].
 
 
 <br>
 <br>
 
-## <strong>  Acknowledgements
+##   Acknowledgements
 <br>
 
 > A big thanks to those API who helped us make this app possible and to software libraries that make all our coding less time consuming.<br><br> 
