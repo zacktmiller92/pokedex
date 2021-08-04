@@ -23,9 +23,8 @@ $(".btn1").click(function(event) {
     
     localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
     
-    getWikiData(pokemonName)
+    // getWikiData(pokemonName)
     getPokeData(pokemonName)
-
 
     history()
 });
@@ -72,21 +71,30 @@ var renderWikiData = function(wikiData) {
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
     $(".text-info").html(wikiExtract).addClass("info");
     $(".text-info").css("color", "white")
-
 };
 
 
 var getPokeData = function(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(function (response) {
-        response.json()
-        .then(function (pokemon) {
-            renderPokeData(pokemon)
-        })
+        if (response.ok) {
+            response.json()
+            .then(function (pokemon) {
+                renderPokeData(pokemon)
+            })
+            getWikiData(pokemonName)
+        } else {
+            // enter modal here that says "enter valid pokmeon name". then remove alert.
+            alert('enter valid pokemon name')
+            return
+        }
     })
 };
 
 var renderPokeData = function(pokeData) {
+
+        
+
          var abilitiesArray = [];
          var movesArray = [];
          var statsArray = [];
@@ -119,7 +127,8 @@ var renderPokeData = function(pokeData) {
         $("#poke-abilities").html(abilitiesArray.join("<br>").replace("-"," "))
         $("#poke-moves").html(movesArray.join("<br>").replace("-"," "))
         $("#poke-stats").html(statsArray.join("<br>").replace("-"," "))
-        $("#poke-types").html(typesArray.join("<br>").replace("-"," "))      
+        $("#poke-types").html(typesArray.join("<br>").replace("-"," "))     
+
 };
 
 history()
