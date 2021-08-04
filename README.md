@@ -19,7 +19,7 @@ Use the Pokemon Search to explore Pokémon by type, stats, ability, and more! Ex
 
 # Repository link
 
-
+https://github.com/zacktmiller92/pokedex.git
 
 
 # Web site link
