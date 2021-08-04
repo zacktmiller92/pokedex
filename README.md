@@ -24,3 +24,5 @@ Use the Pokemon Search to explore Pokémon by type, stats, ability, and more! Ex
 
 # Web site link
 
+https://zacktmiller92.github.io/pokedex/
+
