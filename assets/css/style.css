@@ -14,7 +14,7 @@ body{
  }
 
  .background{
-    background: url(/assets/images/img/20998.jpg);
+    background: url(/assets/images/allOthers/20998.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -52,6 +52,9 @@ h2{
 .btn{
     border-radius: 10px; 
  }
+
+ 
+
  .history{
      font-size: 28px;
      color: yellowgreen;
