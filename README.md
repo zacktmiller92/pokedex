@@ -53,7 +53,7 @@
 >1- This project was made to have quick access to pokemon data , to those who love the PokeVerse.
 <br>
 
->2- insted of using many different API they can just come and use this tool and it will gather all the info for us.
+>2- instead of using many different API they can just come and use this tool and it will gather all the info for us.
 <br>
 
 >3- The purpose of this project it is to make poke search easier.
