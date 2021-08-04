@@ -20,10 +20,12 @@ $(".btn1").click(function(event) {
     event.preventDefault(); 
     var pokemonName = $("#pokename").val()
     pokeHistory.push(pokemonName);
+    
     localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
     
     getWikiData(pokemonName)
     getPokeData(pokemonName)
+
 
     history()
 });
