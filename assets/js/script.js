@@ -19,7 +19,7 @@ var pokeHistory = []
 $(".btn1").click(function(event) {
     event.preventDefault(); 
     var pokemonName = $("#pokename").val()
-    pokeHistory.push(pokemonName);
+    // pokeHistory.push(pokemonName);
     
     // getWikiData(pokemonName)
     getPokeData(pokemonName)
@@ -30,22 +30,21 @@ $(".btn1").click(function(event) {
 // clear history---------------
 $(".btn2").click(function(){
     localStorage.clear();
-    console.log("clear");
+    pokeHistory = []
+    history()
   });
 
 // history storage loop
 function history(){
-
+    // get from local storage and refresh list by clearing it
     var pokeHistory = JSON.parse(localStorage.getItem("pokeHistory"))
-
     pokeHistoryEl.empty();
 
+    // render everything from local storage to the screen
     for ( var i = 0; i < pokeHistory.length; i++){
-        
         var li = $("<li>").text(pokeHistory[i]);
         pokeHistoryEl.append(li).addClass("")
     }
-    console.log('history function has run')
 }
 
 // search function to render everything on the screen---------------
@@ -76,16 +75,23 @@ var getPokeData = function(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(function (response) {
         if (response.ok) {
+            // if 202 response, render pokemon
             response.json()
             .then(function (pokemon) {
                 renderPokeData(pokemon)
             })
+            // if 202 response, continue the rest of the script (wikipedia api, add to local storage,
+            // render on screen using history function)
+            var pokemonName = $("#pokename").val()
+            pokeHistory.push(pokemonName);
             getWikiData(pokemonName)
             localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
             history()
-        } else {
+        } else { 
             // enter modal here that says "enter valid pokmeon name". then remove alert.
-            alert('enter valid pokemon name')
+            var elem = document.querySelector('.modal');
+            var instance = M.Modal.init(elem);
+            instance.open();
             return
         }
     })
@@ -130,6 +136,7 @@ var renderPokeData = function(pokeData) {
         $("#poke-types").html(typesArray.join("<br>").replace("-"," "))     
 
 };
+
 
 history()
 // $("#pokemon_form").on("submit", formHandler)
