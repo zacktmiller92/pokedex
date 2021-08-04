@@ -26,7 +26,7 @@ $(".btn1").click(function(event) {
     // getWikiData(pokemonName)
     getPokeData(pokemonName)
 
-    history()
+    
 });
 
 // clear history---------------
@@ -83,6 +83,7 @@ var getPokeData = function(pokemonName) {
                 renderPokeData(pokemon)
             })
             getWikiData(pokemonName)
+            history()
         } else {
             // enter modal here that says "enter valid pokmeon name". then remove alert.
             alert('enter valid pokemon name')
