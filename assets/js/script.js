@@ -18,14 +18,18 @@ var pokeHistory = []
 
 $(".btn1").click(function(event) {
     event.preventDefault(); 
-    var pokemonName = $("#pokename").attr("checked", true).val().toLowerCase()
+    var pokemonName = $("#pokename").val()
     // pokeHistory.push(pokemonName);
     
     // getWikiData(pokemonName)
-    getPokeData(pokemonName)
-
-    
+    getPokeData(pokemonName)    
 });
+
+// transform upppercase text to lower case as they type-------------
+$('#pokename').keyup(function(){
+    $(this).val($(this).val().toLowerCase());
+});
+
 
 // clear history---------------
 $(".btn2").click(function(){
