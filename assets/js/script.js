@@ -49,6 +49,7 @@ function history(){
         var li = $("<li>").text(pokeHistory[i]);
         pokeHistoryEl.append(li).addClass("")
     }
+   
 }
 
 // search function to render everything on the screen---------------
