@@ -1,4 +1,4 @@
-// slide nav init------------------
+// materialize assets - carousel and mobile navbar slider
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.slider').slider({
