@@ -1,16 +1,12 @@
 // slide nav init------------------
 $(document).ready(function(){
     $('.sidenav').sidenav();
+    $('.slider').slider({
+        height: 450,
+        interval : 2000,
+      });
   });
   
-  // slider init------------
-  $(document).ready(function(){
-    $('.slider').slider({
-      height: 450,
-      interval : 2000,
-    });
-    
-  });
 
 
 var pokeHistoryEl = $(".history");
@@ -67,7 +63,6 @@ var getPokeData = function(pokemonName) {
             var elem = document.querySelector('.modal');
             var instance = M.Modal.init(elem);
             instance.open();
-            return
         }
     })
 };
@@ -111,17 +106,9 @@ var renderPokeData = function(pokeData) {
 
 // get data from APIs on button click
 $(".btn1").click(function(event) {
-    event.preventDefault(); 
     var pokemonName = $("#pokename").val()
     getPokeData(pokemonName)    
 });
-
-// search function to render everything on the screen---------------
-// $(document).ready(function() {        
-//     $(".btn1").click(function(){  
-//         $("#in").show(2000);   
-//     });
-// });
 
 // transform upppercase text to lower case as they type-------------
 $('#pokename').keyup(function(){
@@ -136,7 +123,5 @@ $(".btn2").click(function(){
     history()
   });
 
-
-
+// load history from local storage on page load
 history()
-// $("#pokemon_form").on("submit", formHandler)
