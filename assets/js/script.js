@@ -16,27 +16,6 @@ $(document).ready(function(){
 var pokeHistoryEl = $(".history");
 var pokeHistory = []
 
-$(".btn1").click(function(event) {
-    event.preventDefault(); 
-    var pokemonName = $("#pokename").val()
-    // pokeHistory.push(pokemonName);
-    
-    // getWikiData(pokemonName)
-    getPokeData(pokemonName)    
-});
-
-// transform upppercase text to lower case as they type-------------
-$('#pokename').keyup(function(){
-    $(this).val($(this).val().toLowerCase());
-});
-
-
-// clear history---------------
-$(".btn2").click(function(){
-    localStorage.clear();
-    pokeHistory = []
-    history()
-  });
 
 // history storage loop
 function history(){
@@ -51,17 +30,6 @@ function history(){
     }
    
 }
-
-// search function to render everything on the screen---------------
-$(document).ready(function() {        
-
-    $(".btn1").click(function(){
-        
-        $("#in").show(2000);
-        
-    })    
-})
-
 
 var getWikiData = function(pokemonName) {
     fetch('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&origin=*&titles=' + pokemonName)
@@ -80,18 +48,20 @@ var getPokeData = function(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(function (response) {
         if (response.ok) {
-            // if 202 response, render pokemon
             response.json()
             .then(function (pokemon) {
                 renderPokeData(pokemon)
             })
-            // if 202 response, continue the rest of the script (wikipedia api, add to local storage,
-            // render on screen using history function)
             var pokemonName = $("#pokename").val()
-            pokeHistory.push(pokemonName);
             getWikiData(pokemonName)
-            localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
-            history()
+
+            if ( pokeHistory.indexOf(pokemonName) === -1){
+                pokeHistory.push(pokemonName);
+                localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
+                history()
+            };
+            $("#in").show(2000); 
+
         } else { 
             // enter modal here that says "enter valid pokmeon name". then remove alert.
             var elem = document.querySelector('.modal');
@@ -103,9 +73,6 @@ var getPokeData = function(pokemonName) {
 };
 
 var renderPokeData = function(pokeData) {
-
-        
-
          var abilitiesArray = [];
          var movesArray = [];
          var statsArray = [];
@@ -141,6 +108,34 @@ var renderPokeData = function(pokeData) {
         $("#poke-types").html(typesArray.join("<br>").replace("-"," "))     
 
 };
+
+// get data from APIs on button click
+$(".btn1").click(function(event) {
+    event.preventDefault(); 
+    var pokemonName = $("#pokename").val()
+    getPokeData(pokemonName)    
+});
+
+// search function to render everything on the screen---------------
+// $(document).ready(function() {        
+//     $(".btn1").click(function(){  
+//         $("#in").show(2000);   
+//     });
+// });
+
+// transform upppercase text to lower case as they type-------------
+$('#pokename').keyup(function(){
+    $(this).val($(this).val().toLowerCase());
+});
+
+
+// clear history on button click---------------
+$(".btn2").click(function(){
+    localStorage.clear();
+    pokeHistory = []
+    history()
+  });
+
 
 
 history()
