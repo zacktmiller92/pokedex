@@ -43,23 +43,27 @@ var renderWikiData = function(wikiData) {
 var getPokeData = function(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(function (response) {
+        // if statement to render an erorr message if an invalid pokemon is entered
         if (response.ok) {
+            // get the response json and pass it to renderPokeData funciton
             response.json()
             .then(function (pokemon) {
                 renderPokeData(pokemon)
             })
+            // start the wikipedia api call
             var pokemonName = $("#pokename").val()
             getWikiData(pokemonName)
-
+            // run local storage logic if the pokemon's name is unique (not already in local storage)
             if ( pokeHistory.indexOf(pokemonName) === -1){
                 pokeHistory.push(pokemonName);
                 localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
                 history()
             };
+            // render the pokemon attribute cards on the screen
             $("#in").show(2000); 
 
         } else { 
-            // enter modal here that says "enter valid pokmeon name". then remove alert.
+            // modal that says "enter valid pokmeon name"
             var elem = document.querySelector('.modal');
             var instance = M.Modal.init(elem);
             instance.open();
@@ -96,11 +100,12 @@ var renderPokeData = function(pokeData) {
             typesArray.push(pokeData.types[i].type.name)
         }
 
+        // render all pokemon data on screen 
         $(".pokemon-img").html(`<img src="${primaryImage}" />`)
-        $("#poke-abilities").html(abilitiesArray.join("<br>").replace("-"," "))
-        $("#poke-moves").html(movesArray.join("<br>").replace("-"," "))
-        $("#poke-stats").html(statsArray.join("<br>").replace("-"," "))
-        $("#poke-types").html(typesArray.join("<br>").replace("-"," "))     
+        $("#poke-abilities").html(abilitiesArray.join("<br>").replaceAll("-"," "))
+        $("#poke-moves").html(movesArray.join("<br>").replaceAll("-"," "))
+        $("#poke-stats").html(statsArray.join("<br>").replaceAll("-"," "))
+        $("#poke-types").html(typesArray.join("<br>").replaceAll("-"," "))     
 
 };
 
