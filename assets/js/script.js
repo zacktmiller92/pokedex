@@ -28,12 +28,14 @@ function history(){
 }
 
 var getWikiData = function(pokemonName) {
+    // get data from wikipedia API and pass it to renderWikiData function
     fetch('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&origin=*&titles=' + pokemonName)
     .then( response => response.json())
     .then( data => renderWikiData(data));
 };
 
 var renderWikiData = function(wikiData) {
+    // get data from the extract key of wikipedia data and render it on the screen
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
     $(".text-info").html(wikiExtract).addClass("info");
     $(".text-info").css("color", "white")
@@ -72,6 +74,7 @@ var getPokeData = function(pokemonName) {
 };
 
 var renderPokeData = function(pokeData) {
+        // gets all data from pokeAPI and adds it to respective array
          var abilitiesArray = [];
          var movesArray = [];
          var statsArray = [];
@@ -100,7 +103,7 @@ var renderPokeData = function(pokeData) {
             typesArray.push(pokeData.types[i].type.name)
         }
 
-        // render all pokemon data on screen 
+        // render all pokemon data on screen by joining array and replacing hyphens in the text 
         $(".pokemon-img").html(`<img src="${primaryImage}" />`)
         $("#poke-abilities").html(abilitiesArray.join("<br>").replaceAll("-"," "))
         $("#poke-moves").html(movesArray.join("<br>").replaceAll("-"," "))
