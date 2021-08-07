@@ -125,4 +125,9 @@ h2{
         .text-info{
             margin-top: 50px;
         }
+        .pokemon-img img{
+            margin-top: 60px;
+            margin-left: -50px;
+            width: 110%;
+        }
 }
