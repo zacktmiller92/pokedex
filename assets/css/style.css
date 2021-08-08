@@ -14,7 +14,7 @@ body{
  }
 
  .background{
-    background: url(/assets/images/allOthers/20998.jpg);
+    /* background: url(/assets/images/allOthers/20998.jpg); */
     background-position: center;
     background-size: cover;
 }
@@ -107,22 +107,26 @@ h2{
 }
 
 
+   
 @media all and (max-width: 768px){
+    .slider , h2{
+        display: none;
+    }
     
-    @media all and (max-width: 768px){
-        .slider , h2{
-            display: none;
-        }
-        
-        #card{        
-            margin-bottom: 100px;
-        }
+    #card{        
+        margin-bottom: 100px;
+    }
 
-        .test1{
-        display: inline-block;    
-        opacity: 80%;     
-        }
-        .text-info{
-            margin-top: 50px;
-        }
+    .test1{
+    display: inline-block;    
+    opacity: 80%;     
+    }
+    .text-info{
+        margin-top: 50px;
+    }
+    .pokemon-img img{
+        margin-top: 60px;
+        margin-left: -50px;
+        width: 110%;
+    }
 }

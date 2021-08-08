@@ -1,42 +1,17 @@
-// slide nav init------------------
+// materialize assets - carousel and mobile navbar slider
 $(document).ready(function(){
     $('.sidenav').sidenav();
+    $('.slider').slider({
+        height: 450,
+        interval : 2000,
+      });
   });
   
-  // slider init------------
-  $(document).ready(function(){
-    $('.slider').slider({
-      height: 450,
-      interval : 2000,
-    });
-    
-  });
 
 
 var pokeHistoryEl = $(".history");
 var pokeHistory = []
 
-$(".btn1").click(function(event) {
-    event.preventDefault(); 
-    var pokemonName = $("#pokename").val()
-    // pokeHistory.push(pokemonName);
-    
-    // getWikiData(pokemonName)
-    getPokeData(pokemonName)    
-});
-
-// transform upppercase text to lower case as they type-------------
-$('#pokename').keyup(function(){
-    $(this).val($(this).val().toLowerCase());
-});
-
-
-// clear history---------------
-$(".btn2").click(function(){
-    localStorage.clear();
-    pokeHistory = []
-    history()
-  });
 
 // history storage loop
 function history(){
@@ -49,26 +24,18 @@ function history(){
         var li = $("<li>").text(pokeHistory[i]);
         pokeHistoryEl.append(li).addClass("")
     }
+   
 }
 
-// search function to render everything on the screen---------------
-$(document).ready(function() {        
-
-    $(".btn1").click(function(){
-        
-        $("#in").show(2000);
-        
-    })    
-})
-
-
 var getWikiData = function(pokemonName) {
+    // get data from wikipedia API and pass it to renderWikiData function
     fetch('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&origin=*&titles=' + pokemonName)
     .then( response => response.json())
     .then( data => renderWikiData(data));
 };
 
 var renderWikiData = function(wikiData) {
+    // get data from the extract key of wikipedia data and render it on the screen
     var wikiExtract = Object.values(wikiData.query.pages)[0].extract;
     $(".text-info").html(wikiExtract).addClass("info");
     $(".text-info").css("color", "white")
@@ -78,33 +45,36 @@ var renderWikiData = function(wikiData) {
 var getPokeData = function(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(function (response) {
+        // if statement to render an erorr message if an invalid pokemon is entered
         if (response.ok) {
-            // if 202 response, render pokemon
+            // get the response json and pass it to renderPokeData funciton
             response.json()
             .then(function (pokemon) {
                 renderPokeData(pokemon)
             })
-            // if 202 response, continue the rest of the script (wikipedia api, add to local storage,
-            // render on screen using history function)
+            // start the wikipedia api call
             var pokemonName = $("#pokename").val()
-            pokeHistory.push(pokemonName);
             getWikiData(pokemonName)
-            localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
-            history()
+            // run local storage logic if the pokemon's name is unique (not already in local storage)
+            if ( pokeHistory.indexOf(pokemonName) === -1){
+                pokeHistory.push(pokemonName);
+                localStorage.setItem("pokeHistory", JSON.stringify(pokeHistory));
+                history()
+            };
+            // render the pokemon attribute cards on the screen
+            $("#in").show(2000); 
+
         } else { 
-            // enter modal here that says "enter valid pokmeon name". then remove alert.
+            // modal that says "enter valid pokmeon name"
             var elem = document.querySelector('.modal');
             var instance = M.Modal.init(elem);
             instance.open();
-            return
         }
     })
 };
 
 var renderPokeData = function(pokeData) {
-
-        
-
+        // gets all data from pokeAPI and adds it to respective array
          var abilitiesArray = [];
          var movesArray = [];
          var statsArray = [];
@@ -133,14 +103,33 @@ var renderPokeData = function(pokeData) {
             typesArray.push(pokeData.types[i].type.name)
         }
 
+        // render all pokemon data on screen by joining array and replacing hyphens in the text 
         $(".pokemon-img").html(`<img src="${primaryImage}" />`)
-        $("#poke-abilities").html(abilitiesArray.join("<br>").replace("-"," "))
-        $("#poke-moves").html(movesArray.join("<br>").replace("-"," "))
-        $("#poke-stats").html(statsArray.join("<br>").replace("-"," "))
-        $("#poke-types").html(typesArray.join("<br>").replace("-"," "))     
+        $("#poke-abilities").html(abilitiesArray.join("<br>").replaceAll("-"," "))
+        $("#poke-moves").html(movesArray.join("<br>").replaceAll("-"," "))
+        $("#poke-stats").html(statsArray.join("<br>").replaceAll("-"," "))
+        $("#poke-types").html(typesArray.join("<br>").replaceAll("-"," "))     
 
 };
 
+// get data from APIs on button click
+$(".btn1").click(function(event) {
+    var pokemonName = $("#pokename").val()
+    getPokeData(pokemonName)    
+});
 
+// transform upppercase text to lower case as they type-------------
+$('#pokename').keyup(function(){
+    $(this).val($(this).val().toLowerCase());
+});
+
+
+// clear history on button click---------------
+$(".btn2").click(function(){
+    localStorage.clear();
+    pokeHistory = []
+    history()
+  });
+
+// load history from local storage on page load
 history()
-// $("#pokemon_form").on("submit", formHandler)
